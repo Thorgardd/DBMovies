@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
 import axios from "axios";
 import EntityCard from "../components/EntityCard";
+import {SendRequestForShows} from "../tools/Requests";
 
 const TvShows = () => {
 
@@ -11,20 +12,6 @@ const TvShows = () => {
     const apiKey = "6eb21f772f8f904f7f8e43a3b60a13d8";
     const [isLoading, setIsLoading] = useState(false);
 
-    const SendRequestForShows = () => {
-        setIsLoading(true);
-        axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=en-US&page=1&query=${search}`)
-            .then((res) => {
-                setShows(res.data.results)
-                setIsLoading(false)
-                console.log(res.data.results)
-            })
-            .catch((err) => {
-                console.log("Erreur:", err)
-                setIsLoading(false)
-            });
-    }
-
     if (isLoading)
         return <div>Chargement en cours...</div>
 
@@ -32,7 +19,7 @@ const TvShows = () => {
         <>
             <SearchBar type={"text"}
                        placeholder={"Veuillez renseigner votre série..."}
-                       request={() => SendRequestForShows()}
+                       request={() => SendRequestForShows(setIsLoading, setShows, apiKey, search)}
                        searchState={search}
                        setState={setSearch}/>
             <ShowsPageContainer>

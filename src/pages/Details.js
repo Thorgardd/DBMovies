@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import {useParams} from "react-router-dom";
 import styled from "styled-components";
+import {GetMovieById, GetShowById} from "../tools/Requests";
+import {CheckIsMovieParams} from "../tools/ExternalsMethods";
 
 const Details = () => {
 
@@ -12,38 +13,12 @@ const Details = () => {
     const [isMovie, setIsMovie] = useState(false)
 
     useEffect(() => {
-        if (CheckIsMovieParams()){
-            GetMovieById(urlId)
-        } else if (!CheckIsMovieParams()){
-            GetShowById(urlId)
+        if (CheckIsMovieParams(setIsMovie)){
+            GetMovieById(urlId, setObject, ApiKey)
+        } else if (!CheckIsMovieParams(setIsMovie)) {
+            GetShowById(urlId, setObject, ApiKey)
         }
     }, [])
-
-    const CheckIsMovieParams = () => {
-        if (window.location.href.indexOf("movies") !== -1){
-            setIsMovie(true);
-            return true;
-        } else {
-            setIsMovie(false);
-            return false;
-        }
-    }
-
-    const GetMovieById = (id) => {
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${ApiKey}&language=en-US`)
-            .then((res) => {
-                setObject(res.data)
-            })
-            .catch((err) => console.log(err))
-    }
-
-    const GetShowById = (id) => {
-        axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${ApiKey}&language=en-US`)
-            .then((res) => {
-                setObject(res.data)
-            })
-            .catch((err) => console.log(err));
-    }
 
     return (
         <div>
