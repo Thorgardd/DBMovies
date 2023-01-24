@@ -6,50 +6,38 @@ const EntityCard = ({entity, isMovie}) => {
 
     if (isMovie)
         return (
-            <MainContainer>
-                <CardContainer>
+            <CardContainer>
+                <LinkOverImg href={`/movies/${entity.id}`}>
                     <Image src={`https://image.tmdb.org/t/p/w500/${entity.backdrop_path}`} alt={"Image d'un film"}/>
-                    <Title>{entity.original_title}</Title>
-                </CardContainer>
-            </MainContainer>
+                </LinkOverImg>
+            </CardContainer>
         );
 
     if (!isMovie)
         return (
-            <MainContainer>
-                <CardContainer>
-                    <Image src={`https://image.tmdb.org/t/p/w500/${entity.backdrop_path}`} alt={"Image d'une série"} />
-                    <Title>{entity.name}</Title>
-                </CardContainer>
-            </MainContainer>
+            <CardContainer>
+                <LinkOverImg href={`/shows/${entity.id}`}>
+                    <Image src={`https://image.tmdb.org/t/p/w500/${entity.backdrop_path}`} alt={"Image d'une serie"}/>
+                </LinkOverImg>
+            </CardContainer>
         )
 };
 
 export default EntityCard;
 
-const MainContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  min-height: 100vh;
-`;
-
 const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  height: 500px;
-`;
-
-const Title = styled.h2`
-  width:100%;
-  height: 10%;
-  color: white;
+  width: 300px;
+  height: 350px;
+  
 `;
 
 const Image = styled.img`
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  width: 200px;
-  height: 200px;
-  ;
+  border-radius: 5px;
+`;
+
+const LinkOverImg = styled.a`
+  
 `;

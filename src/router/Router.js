@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Movies from "../pages/Movies";
 import TvShows from "../pages/TvShows";
 import Header from "../components/Header";
+import Details from "../pages/Details";
 
 const Router = () => {
     return (
@@ -13,7 +14,9 @@ const Router = () => {
                 <Routes>
                     <Route path={"/"} element={<Home/>}/>
                     <Route path={"/movies"} element={<Movies/>}/>
+                    <Route path={`/movies/:id`} element={<Details/>}/>
                     <Route path={"/shows"} element={<TvShows/>}/>
+                    <Route path={`/shows/:id`} element={<Details/>}/>
                 </Routes>
             </BrowserRouter>
         </>

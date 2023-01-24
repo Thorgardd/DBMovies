@@ -29,27 +29,35 @@ const TvShows = () => {
         return <div>Chargement en cours...</div>
 
     return (
-        <ShowsPageContainer>
+        <>
             <SearchBar type={"text"}
                        placeholder={"Veuillez renseigner votre série..."}
                        request={() => SendRequestForShows()}
                        searchState={search}
                        setState={setSearch}/>
-            <ShowList>
-                {shows.map((show, index) => (
-                    <EntityCard isMovie={false} key={index} entity={show}/>
-                ))}
-            </ShowList>
-        </ShowsPageContainer>
+            <ShowsPageContainer>
+                <ShowList>
+                    {shows.map((show, index) => (
+                        <EntityCard isMovie={false} key={index} entity={show}/>
+                    ))}
+                </ShowList>
+            </ShowsPageContainer>
+        </>
     );
 };
 
 export default TvShows;
 
-const ShowList = styled.div`
-  
+const ShowsPageContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;
 
-const ShowsPageContainer = styled.div`
-  
+const ShowList = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 40px;
 `;
+

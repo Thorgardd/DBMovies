@@ -48,5 +48,5 @@ const NavButtons = styled.a`
   align-items: center;
   text-decoration: none;
   color: white;
-  font-family: "American Typewriter";
+  font-family: "American Typewriter", sans-serif;
 `;

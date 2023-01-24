@@ -50,9 +50,12 @@ export default Movies;
 const MoviePageContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
 `;
 
 const MovieList = styled.div`
-  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 40px;
 `;
