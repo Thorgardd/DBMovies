@@ -45,8 +45,7 @@ export const SendRequestForShows = (setIsLoading, setShows, search) => {
 }
 
 // GET Method for retrieving trending movies from TMDB Api
-export const SendRequestForTrendingMovies = (setIsLoading, setMovies) => {
-    setIsLoading(true);
+export const SendRequestForTrendingMovies = (setMovies) => {
     axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
         .then((res) => setMovies(res.data.results))
         .catch((err) => console.log("Erreur: ", err))

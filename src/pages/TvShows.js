@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import SearchBar from "../components/SearchBar";
 import styled from "styled-components";
-import axios from "axios";
 import EntityCard from "../components/EntityCard";
 import {SendRequestForShows} from "../tools/Requests";
 

@@ -5,11 +5,10 @@ import {SendRequestForTrendingMovies} from "../tools/Requests";
 
 const Home = () => {
 
-    const [movies, setMovies] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        SendRequestForTrendingMovies(setIsLoading, setMovies)
+        SendRequestForTrendingMovies(setMovies)
     }, [])
 
     return (

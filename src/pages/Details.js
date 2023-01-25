@@ -7,7 +7,7 @@ import {CheckIsMovieParams} from "../tools/ExternalsMethods";
 const Details = () => {
 
     const params = useParams();
-    const [urlId, setUrlId] = useState(params.id)
+    const urlId = params.id;
     const [object, setObject] = useState({})
     const [isMovie, setIsMovie] = useState(false)
 
@@ -17,7 +17,7 @@ const Details = () => {
         } else if (!CheckIsMovieParams(setIsMovie)) {
             GetShowById(urlId, setObject)
         }
-    }, [])
+    }, [urlId])
 
     if (!isMovie)
         return (
