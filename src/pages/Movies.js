@@ -8,7 +8,6 @@ const Movies = () => {
 
     const [movies, setMovies] = useState([])
     const [search, setSearch] = useState("")
-    const apiKey = "6eb21f772f8f904f7f8e43a3b60a13d8"
     const [isLoading, setIsLoading] = useState(false);
 
     if (isLoading)
@@ -20,7 +19,7 @@ const Movies = () => {
                        placeholder={"Veuillez renseigner votre film..."}
                        state={search}
                        setState={setSearch}
-                       request={() => SendRequestForMovies(setIsLoading, setMovies, apiKey, search)}/>
+                       request={() => SendRequestForMovies(setIsLoading, setMovies, search)}/>
             <MoviePageContainer>
                 <MovieList>
                     {movies.map((movie, index) => (

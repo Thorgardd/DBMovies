@@ -17,7 +17,7 @@ export default SearchBar;
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100px;
+  min-height: 150px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -25,7 +25,7 @@ const Container = styled.div`
 
 const Bar = styled.input`
   display: flex;
-  height: 100%;
+  height: 50%;
   width: 30%;
   border-radius: 5px;
   padding-left: 5px;
@@ -40,4 +40,11 @@ const ValidateButton = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 5px;
+  
+  &:hover{
+    background-color: green;
+    transition: 0.3s all ease-out;
+    transform: scale(1.15);
+    color: white;
+  }
 `;

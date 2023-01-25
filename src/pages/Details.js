@@ -6,7 +6,6 @@ import {CheckIsMovieParams} from "../tools/ExternalsMethods";
 
 const Details = () => {
 
-    const ApiKey = "6eb21f772f8f904f7f8e43a3b60a13d8"
     const params = useParams();
     const [urlId, setUrlId] = useState(params.id)
     const [object, setObject] = useState({})
@@ -14,24 +13,56 @@ const Details = () => {
 
     useEffect(() => {
         if (CheckIsMovieParams(setIsMovie)){
-            GetMovieById(urlId, setObject, ApiKey)
+            GetMovieById(urlId, setObject)
         } else if (!CheckIsMovieParams(setIsMovie)) {
-            GetShowById(urlId, setObject, ApiKey)
+            GetShowById(urlId, setObject)
         }
     }, [])
 
-    return (
-        <div>
-            <Infos>{object.id}</Infos>
-            <Infos>{object.overview}</Infos>
-            <Infos>{object.title}</Infos>
-            <Infos>{object.vote_count}</Infos>
-        </div>
+    if (!isMovie)
+        return (
+            <DetailContainer>
+                <DetailTitle>{object.original_name}</DetailTitle>
+                <Image src={`https://image.tmdb.org/t/p/w500/${object.backdrop_path}`}/>
+                <SubInfos>{object.overview}</SubInfos>
+                <SubInfos>Statut : {object.status} in {object.release_date}</SubInfos>
+                <SubInfos>Limite d'âge : {object.adult ? "Enfants interdits" : "Tout public" }</SubInfos>
+            </DetailContainer>
+        );
+
+    if (isMovie)
+        return (
+        <DetailContainer>
+            <DetailTitle>{object.title}</DetailTitle>
+                <Image src={`https://image.tmdb.org/t/p/w500/${object.backdrop_path}`}/>
+                <SubInfos>{object.overview}</SubInfos>
+                <SubInfos>Statut : {object.status} in {object.release_date}</SubInfos>
+                <SubInfos>Limite d'âge : {object.adult ? "Enfants interdits" : "Tout public" }</SubInfos>
+        </DetailContainer>
     );
 };
 
 export default Details;
 
-const Infos = styled.p`
+const DetailContainer = styled.div`
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
   color: white;
+  font-family: "American Typewriter", sans-serif;
+`;
+
+const SubInfos = styled.h4`
+  color: white;
+`;
+
+const Image = styled.img`
+  height: 400px;
+  width: 400px;
+`;
+
+const DetailTitle = styled.h1`
+  
 `;

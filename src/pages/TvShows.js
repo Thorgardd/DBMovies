@@ -9,7 +9,6 @@ const TvShows = () => {
 
     const [shows, setShows] = useState([]);
     const [search, setSearch] = useState("");
-    const apiKey = "6eb21f772f8f904f7f8e43a3b60a13d8";
     const [isLoading, setIsLoading] = useState(false);
 
     if (isLoading)
@@ -19,7 +18,7 @@ const TvShows = () => {
         <>
             <SearchBar type={"text"}
                        placeholder={"Veuillez renseigner votre série..."}
-                       request={() => SendRequestForShows(setIsLoading, setShows, apiKey, search)}
+                       request={() => SendRequestForShows(setIsLoading, setShows, search)}
                        searchState={search}
                        setState={setSearch}/>
             <ShowsPageContainer>
