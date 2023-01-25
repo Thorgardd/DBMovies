@@ -9,15 +9,15 @@ import Details from "../pages/Details";
 const Router = () => {
     return (
         <>
-            <Header/>
             <BrowserRouter>
-                <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/movies"} element={<Movies/>}/>
-                    <Route path={`/movies/:id`} element={<Details/>}/>
-                    <Route path={"/shows"} element={<TvShows/>}/>
-                    <Route path={`/shows/:id`} element={<Details/>}/>
-                </Routes>
+                <Header/>
+                    <Routes>
+                        <Route path={"/"} element={<Home/>}/>
+                        <Route path={"/movies"} element={<Movies/>}/>
+                        <Route path={`/movies/:id`} element={<Details/>}/>
+                        <Route path={"/shows"} element={<TvShows/>}/>
+                        <Route path={`/shows/:id`} element={<Details/>}/>
+                    </Routes>
             </BrowserRouter>
         </>
     );

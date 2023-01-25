@@ -1,12 +1,13 @@
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return (
         <HeaderContainer>
-            <Title><NavButtons href={"/"}>The Movie Database</NavButtons></Title>
+            <Title><NavButtons to={"/"}>The Movie Database</NavButtons></Title>
             <Navigation>
-                <NavButtons href={"/movies"}>Films</NavButtons>
-                <NavButtons href={"/shows"}>Séries</NavButtons>
+                <NavButtons to={"/movies"}>Films</NavButtons>
+                <NavButtons to={"/shows"}>Séries</NavButtons>
             </Navigation>
         </HeaderContainer>
     )
@@ -40,7 +41,7 @@ const Navigation = styled.nav`
   align-items: center;
 `;
 
-const NavButtons = styled.a`
+const NavButtons = styled(Link)`
   display: flex;
   width: auto;
   height: 100%;
