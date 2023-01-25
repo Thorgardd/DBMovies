@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <>
             <MoviePageContainer>
-                <Introduction>Voici un accès à une base de données de films et séries. Vous pouvez effectuer vos recherches dans une des onglets disponibles.</Introduction>
+                <Introduction>Voici un accès à une base de données de films et séries. Vous pouvez effectuer vos recherches dans un des onglets disponibles.</Introduction>
                 <MovieList>
                     {movies.map((movie, index) => (
                         <EntityCard isMovie={true} key={index} entity={movie}/>
